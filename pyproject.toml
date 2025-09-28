@@ -1,0 +1,32 @@
+[project]
+name = "n4m_straininfo_2025"
+version = "0.1.0"
+description = """Hands-on - N4M StrainInfo 2025"""
+readme = "README.md"
+authors = [{ name = "Artur Lissin", email = "artur.lissin@dsmz.de" }]
+license = "Unlicense"
+
+requires-python = ">=3.13,<4"
+dependencies = [
+  "requests ==2.32.5",
+  "saim @ git+https://github.com/LeibnizDSMZ/saim.git@v0.9.1",
+  "cafi @ git+https://github.com/LeibnizDSMZ/cafi.git@v0.9.3",
+]
+
+[dependency-groups]
+presentation = ["notebook ==7.4.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["n4m_straininfo_2025"]
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
+default-groups = []
+
+[project.scripts]
+n4m_run = "n4m_straininfo_2025.main:run"
