@@ -11,7 +11,7 @@ UVE = $(if ${UVEL},'uv',$(UV_INSTALL_DIR)/uv)
 pres:
 	$(UVE) sync --frozen --all-groups
 	$(UVE) run jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace presentation.ipynb
-	$(UVE) run jupyter notebook presentation.ipynb
+	BROWSER=chromium $(UVE) run jupyter notebook presentation.ipynb
 
 install:
 	which uv || [ -d "${UV_INSTALL_DIR}" ] || (curl -LsSf https://astral.sh/uv/install.sh | sh -s - --quiet)
